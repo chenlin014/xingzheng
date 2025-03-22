@@ -1,0 +1,3 @@
+[submodule "mb-tool"]
+	path = mb-tool
+	url = git@github.com:chenlin014/mb-tool.git
