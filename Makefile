@@ -1,6 +1,5 @@
 include default.mk
 -include custom.mk
--include hidden.mk
 
 all: main-dict $(foreach std,$(char-standards),jianma-$(std))
 
