@@ -1,9 +1,9 @@
 # 用字标准
 char-standards=zt jt jp
 
-# 字根方案
-zg-scheme=xingyi
-# 字根码
+# 解字方案
+jz-scheme=xingyi
+# 字根区位码
 zg-code=xingzheng
 
 keymap=qwerty
