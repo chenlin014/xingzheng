@@ -3,6 +3,8 @@ char-standards=zt jt jp
 
 # 解字方案
 jz-scheme=xingyi
+# 方案文件夾
+scheme-dir=jz-scheme/$(jz-scheme)
 # 字根区位码
 zg-code=xingzheng
 
