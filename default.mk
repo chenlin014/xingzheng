@@ -20,7 +20,9 @@ common-jt?=char_set/common-jt
 common-jp?=char_set/common-jp
 
 keymap?=qwerty
+keymap-file?=keymap/$(keymap).json
 codemap?=zhengma
+codemap-file?=codemap/$(codemap).json
 
-rules?=rules/a5.tsv
+rules?=rules/aabyz.tsv
 jm-methods?=0:0,1,2:0,1,-1
