@@ -1,4 +1,8 @@
+ifeq ($(config),)
 -include custom.mk
+else
+-include $(config)
+endif
 include default.mk
 
 ifeq ($(char-standards),)
@@ -29,6 +33,8 @@ jianma-%: build zg-code
 	python mb-tool/subset.py $(table-$(*)) $(common-$(*)) | \
 		python mb-tool/zm_dict.py build/zg-code -r $(rules) | \
 		python mb-tool/jianma-gen.py $(jm-methods) --freq-table $(char-freq-$(*)) > build/jianma-$*.tsv
+
+test:
 
 clean:
 	rm build/*
