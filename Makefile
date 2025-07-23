@@ -1,16 +1,17 @@
 -include custom.mk
 include default.mk
 
-all: main-dict $(foreach std,$(char-standards),jianma-$(std))
+all: $(foreach std,$(char-standards),dict-$(std))
 
 build:
 	mkdir $@
 
-main-dict: build
-	python mb-tool/zm_dict.py $(scheme-dir)/zg-code/$(zg-code).tsv $(scheme-dir)/main.tsv -r $(rules) > build/main.tsv
+dict-%: build jianma-%
+	python mb-tool/zm_dict.py $(zg-code-mb) $(table-$(*)) -r $(rules) > build/dict-$*.tsv
 
 jianma-%: build
-	python mb-tool/zm_dict.py $(scheme-dir)/zg-code/$(zg-code).tsv $(scheme-dir)/common-$*.tsv -r $(rules) | \
+	python mb-tool/subset.py $(table-$(*)) $(common-$(*)) | \
+		python mb-tool/zm_dict.py $(zg-code-mb) -r $(rules) | \
 		python mb-tool/jianma-gen.py $(jm-methods) --freq-table $(char-freq-$(*)) > build/jianma-$*.tsv
 
 clean:
