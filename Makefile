@@ -26,11 +26,13 @@ zg-code:
 
 jianma: build zg-code
 	python mb-tool/subset.py $(table) $(common) | \
+		awk -F'\t' '$$2 ~ /.../ {print $$1"\t"$$2}' | \
 		python mb-tool/zm_dict.py build/zg-code -r $(rules) | \
 		python mb-tool/jianma-gen.py $(jm-methods) --freq-table $(char-freq) > build/jianma.tsv
 
 jianma-%: build zg-code
 	python mb-tool/subset.py $(table-$(*)) $(common-$(*)) | \
+		awk -F'\t' '$$2 ~ /.../ {print $$1"\t"$$2}' | \
 		python mb-tool/zm_dict.py build/zg-code -r $(rules) | \
 		python mb-tool/jianma-gen.py $(jm-methods) --freq-table $(char-freq-$(*)) > build/jianma-$*.tsv
 
