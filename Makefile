@@ -6,7 +6,7 @@ endif
 include default.mk
 
 ifeq ($(char-standards),)
-all: dict jianma
+all: dict
 else
 all: $(foreach std,$(char-standards),dict-$(std))
 endif
