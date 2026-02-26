@@ -36,7 +36,5 @@ jianma-%: build zg-code
 		python mb-tool/zm_dict.py build/zg-code -r $(rules) | \
 		python mb-tool/jianma-gen.py $(jm-methods) --freq-table $(char-freq-$(*)) > build/jianma-$*.tsv
 
-test:
-
 clean:
 	rm build/*
