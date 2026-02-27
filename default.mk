@@ -25,4 +25,14 @@ codemap?=zhengma
 codemap-file?=codemap/$(codemap).json
 
 rules?=rules/aabyz.tsv
-jm-methods?=0:0,1,2:0,1,-1
+
+# A, ABC, ABZ, AYZ, AaB, AaZ, ABb, AZz
+A=0
+ABC=0,2,4
+ABZ=0,2,-2
+AYZ=0,-4,-2
+AaB=0,1,2
+AaZ=0,1,-2
+ABb=0,2,3
+AZz=0,-2,-1
+jm-methods?=$(A):$(ABC):$(ABZ):$(AYZ):$(AaB):$(AaZ):$(ABb):$(AZz)
