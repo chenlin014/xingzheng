@@ -1,7 +1,7 @@
 # 解字方案
-jz-scheme?=xingyi
+zg-scheme?=xingyi
 # 方案文件夾
-scheme-dir?=jz-scheme/$(jz-scheme)
+scheme-dir?=zg-scheme/$(zg-scheme)
 # 字根区位码
 zg-code?=xingzheng
 zg-code-mb=$(scheme-dir)/zg-code/$(zg-code).tsv
@@ -9,10 +9,10 @@ zg-code-mb=$(scheme-dir)/zg-code/$(zg-code).tsv
 # 字体标准
 char-standards?=ft jt jp
 # 碼表
-table?=$(scheme-dir)/$(jz-scheme).tsv
-table-ft?=$(scheme-dir)/$(jz-scheme)-ft.tsv
-table-jt?=$(scheme-dir)/$(jz-scheme)-jt.tsv
-table-jp?=$(scheme-dir)/$(jz-scheme)-jp.tsv
+table?=$(scheme-dir)/$(zg-scheme).tsv
+table-ft?=$(scheme-dir)/$(zg-scheme)-ft.tsv
+table-jt?=$(scheme-dir)/$(zg-scheme)-jt.tsv
+table-jp?=$(scheme-dir)/$(zg-scheme)-jp.tsv
 # 常用字表
 common?=char_set/common-ft
 common-ft?=char_set/common-ft
@@ -34,5 +34,5 @@ AaZ=0,1,-2
 ABb=0,2,3
 AZz=0,-2,-1
 jm-methods?=$(A):$(ABC):$(ABZ):$(AYZ):$(AaB):$(AaZ):$(ABb):$(AZz)
-# 多長的編碼需要簡碼
+# 給多長的編碼生成簡碼
 jm-gen-length?=4

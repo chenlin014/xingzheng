@@ -23,7 +23,7 @@ dict-%: build zg-code
 
 zg-code:
 	python mb-tool/apply_mapping.py codemap/key_pos_num.json $(codemap-file) $(zg-code-mb) | \
-		sed -E 's/^(.+)\t/(\1)\t/' > build/zg-code
+		sed -E 's/^(.+)\t/(\1)\t/' > build/zg-code # 區分字根和區位碼
 
 jianma: jianma-.
 
