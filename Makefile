@@ -30,7 +30,7 @@ jianma: jianma-.
 jianma-%: dict-%
 	$(eval ver = $(subst -.,,-$(*)))
 	python mb-tool/subset.py build/dict$(ver).tsv $(common$(ver)) | \
-		awk -F'\t' 'length($$2) > 4 {print $$1"\t"$$2}' | \
+		awk -F'\t' 'length($$2) >= $(jm-gen-length) {print $$1"\t"$$2}' | \
 		python mb-tool/jianma-gen.py $(jm-methods) --freq-table $(char-freq$(ver)) > build/jianma$(ver).tsv
 
 clean:

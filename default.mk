@@ -24,9 +24,7 @@ keymap-file?=keymap/$(keymap).json
 codemap?=zhengma
 codemap-file?=codemap/$(codemap).json
 
-rules?=rules/aabyz.tsv
-
-# A, ABC, ABZ, AYZ, AaB, AaZ, ABb, AZz
+# 簡碼取碼法
 A=0
 ABC=0,2,4
 ABZ=0,2,-2
@@ -36,3 +34,5 @@ AaZ=0,1,-2
 ABb=0,2,3
 AZz=0,-2,-1
 jm-methods?=$(A):$(ABC):$(ABZ):$(AYZ):$(AaB):$(AaZ):$(ABb):$(AZz)
+# 多長的編碼需要簡碼
+jm-gen-length?=4
