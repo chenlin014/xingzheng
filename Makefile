@@ -6,9 +6,9 @@ endif
 include default.mk
 
 ifeq ($(char-standards),)
-all: dict jianma
+all: dict.keymap jianma
 else
-all: $(foreach std,$(char-standards),dict-$(std) jianma-$(std))
+all: $(foreach std,$(char-standards),dict.keymap-$(std) jianma-$(std))
 endif
 
 build:
@@ -20,6 +20,13 @@ dict-%: build zg-code
 	$(eval ver = $(subst -.,,-$(*)))
 	python mb-tool/column_repl.py -re -c 1 '(.) -> (\1)' $(table$(ver)) | \
 		python mb-tool/column_repl.py -c 1 -f build/zg-code > build/dict$(ver).tsv
+
+dict.keymap: dict.keymap-.
+
+dict.keymap-%: dict-%
+	$(eval ver = $(subst -.,,-$(*)))
+	python mb-tool/apply_mapping.py $(codemap-file) $(keymap-file) \
+		build/dict$(ver).tsv > build/dict.$(codemap).$(keymap).tsv
 
 zg-code:
 	python mb-tool/apply_mapping.py codemap/key_pos_num.json $(codemap-file) $(zg-code-mb) | \
