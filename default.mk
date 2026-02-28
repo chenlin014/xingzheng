@@ -24,6 +24,11 @@ keymap-file?=keymap/$(keymap).json
 codemap?=zhengma
 codemap-file?=codemap/$(codemap).json
 
+jm-name-ft?=簡碼
+jm-name-jt?=简码
+jm-name-jp?=略コード
+jm-name?=$(jm-name-ft)
+
 # 簡碼取碼法
 A=0
 ABC=0,2,4
