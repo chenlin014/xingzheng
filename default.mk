@@ -1,4 +1,4 @@
-# 解字方案
+# 字根方案
 zg-scheme?=xingyi
 # 方案文件夾
 scheme-dir?=zg-scheme/$(zg-scheme)
