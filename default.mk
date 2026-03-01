@@ -3,7 +3,7 @@ zg-scheme?=xingyi
 # 方案文件夾
 scheme-dir?=zg-scheme/$(zg-scheme)
 # 字根区位码
-zg-code?=xingzheng
+zg-code?=leifen
 zg-code-mb=$(scheme-dir)/zg-code/$(zg-code).tsv
 
 # 字体标准
@@ -21,7 +21,7 @@ common-jp?=char-set/common-jp
 
 keymap?=qwerty
 keymap-file?=keymap/$(keymap).json
-codemap?=zhengma
+codemap?=leifen.qwerty
 codemap-file?=codemap/$(codemap).json
 
 char-freq-ft?=char-freq/ft.tsv
