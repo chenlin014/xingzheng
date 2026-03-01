@@ -14,10 +14,10 @@ table-ft?=$(scheme-dir)/$(zg-scheme)-ft.tsv
 table-jt?=$(scheme-dir)/$(zg-scheme)-jt.tsv
 table-jp?=$(scheme-dir)/$(zg-scheme)-jp.tsv
 # 常用字表
-common?=char_set/common-ft
-common-ft?=char_set/common-ft
-common-jt?=char_set/common-jt
-common-jp?=char_set/common-jp
+common?=char-set/common-ft
+common-ft?=char-set/common-ft
+common-jt?=char-set/common-jt
+common-jp?=char-set/common-jp
 
 keymap?=qwerty
 keymap-file?=keymap/$(keymap).json
