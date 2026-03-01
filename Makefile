@@ -28,8 +28,12 @@ dict-%: full-% jianma-%
 	python mb-tool/apply_mapping.py $(codemap-file) $(keymap-file) \
 		build/full$(ver).tsv > build/dict$(ver).tsv
 	printf "\n# $(jm-name$(ver))\n" >> build/dict$(ver).tsv
-	python mb-tool/apply_mapping.py $(codemap-file) $(keymap-file) \
-		build/jianma$(ver).tsv >> build/dict$(ver).tsv
+	python mb-tool/apply_mapping.py $(codemap-file) $(keymap-file) build/jianma$(ver).tsv > build/temp
+	awk -F'\t' 'NR==FNR {code[$$1]=$$2; next} ($$1 in code) {print $$1"\t"$$2"\t"code[$$1]}' \
+		build/dict$(ver).tsv build/temp | tee >> build/dict$(ver).tsv
+	sed -E 's/^(.+)\t(.)(.)$$/\1\t\2\3\t\2\3\3/' build/dict$(ver).tsv > build/temp
+	cat build/temp > build/dict$(ver).tsv
+	rm build/temp
 
 zg-code:
 	python mb-tool/apply_mapping.py codemap/key_pos_num.json $(codemap-file) $(zg-code-mb) | \
