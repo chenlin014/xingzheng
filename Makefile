@@ -47,5 +47,14 @@ jianma-%: full-%
 		awk -F'\t' 'length($$2) >= $(jm-gen-length) {print $$1"\t"$$2}' | \
 		python mb-tool/jianma-gen.py $(jm-methods) --freq-table $(char-freq$(ver)) > build/jianma$(ver).tsv
 
+check-zg-code:
+ifeq ($(char-standards),)
+	awk -F "\t" -f mb-tool/code_set.awk $(table) | \
+		python mb-tool/subset.py --sym-diff $(zg-code-mb)
+else
+	awk -F "\t" -f mb-tool/code_set.awk $(foreach std,$(char-standards),$(table-$(std))) | \
+		python mb-tool/subset.py --sym-diff $(zg-code-mb)
+endif
+
 clean:
 	rm build/*
