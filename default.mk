@@ -7,7 +7,7 @@ zg-code?=xingzheng
 zg-code-mb=$(scheme-dir)/zg-code/$(zg-code).tsv
 
 # 字体标准
-char-standards?=ft jt jp
+char-standards?=ft jt
 # 碼表
 table?=$(scheme-dir)/$(zg-scheme).tsv
 table-ft?=$(scheme-dir)/$(zg-scheme)-ft.tsv
@@ -23,6 +23,10 @@ keymap?=qwerty
 keymap-file?=keymap/$(keymap).json
 codemap?=zhengma
 codemap-file?=codemap/$(codemap).json
+
+char-freq-ft?=char-freq/ft.tsv
+char-freq-jt?=char-freq/jt.tsv
+char-freq?=$(char-freq-ft)
 
 jm-name-ft?=簡碼
 jm-name-jt?=简码
