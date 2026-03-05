@@ -55,6 +55,7 @@ else
 	awk -F "\t" -f mb-tool/code_set.awk $(foreach std,$(char-standards),$(table-$(std))) | \
 		python mb-tool/subset.py --sym-diff $(zg-code-mb)
 endif
+	python mb-tool/find_duplicate.py $(zg-code-mb)
 
 clean:
 	rm build/*
