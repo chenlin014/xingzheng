@@ -51,6 +51,16 @@ jianma-%: full-%
 		python mb-tool/jianma-gen.py $(jm-methods) --freq-table $(char-freq$(ver)) \
 			--format "{text}	{jm}|{code}" >> build/jianma$(ver).tsv
 
+ifeq ($(char-standards),)
+zg-freq: zg-freq-.
+else
+zg-freq: $(foreach std,$(char-standards),zg-freq-$(std))
+endif
+
+zg-freq-%:
+	$(eval ver = $(subst -.,,-$(*)))
+	python mb-tool/code_freq.py $(table$(ver)) --freq-table $(char-freq$(ver)) > zg-freq/$(zg-scheme)$(ver).tsv
+
 check-zg-code:
 ifeq ($(char-standards),)
 	awk -F "\t" -f mb-tool/code_set.awk $(table) | \
