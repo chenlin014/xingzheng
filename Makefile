@@ -47,6 +47,7 @@ jianma-%: full-%
 		python mb-tool/jianma-gen.py "0" --freq-table $(char-freq$(ver)) \
 			--format "{text}	{jm}|{code}" > build/jianma$(ver).tsv
 	python mb-tool/subset.py build/full$(ver).tsv $(common$(ver)) | \
+		python mb-tool/subset.py -d -st build/jianma$(ver).tsv | \
 		awk -F'\t' 'length($$2) >= $(jm-gen-len-3) {print $$1"\t"$$2}' | \
 		python mb-tool/jianma-gen.py $(jm-methods) --freq-table $(char-freq$(ver)) \
 			--format "{text}	{jm}|{code}" >> build/jianma$(ver).tsv
