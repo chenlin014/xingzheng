@@ -21,7 +21,7 @@ common-jp?=char-set/common-jp
 
 keymap?=qwerty
 keymap-file?=keymap/$(keymap).json
-codemap?=leifen.qwerty
+codemap?=leifen
 codemap-file?=codemap/$(codemap).json
 
 char-freq-ft?=char-freq/ft.tsv

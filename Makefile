@@ -46,14 +46,14 @@ jianma-%: full-%
 	python mb-tool/subset.py build/full$(ver).tsv $(common$(ver)) | \
 		awk -F'\t' 'length($$2) >= $(jm-gen-len-1) {print $$1"\t"$$2}' | \
 		python mb-tool/jianma-gen.py $(jm-methods-1) --freq-table $(char-freq$(ver)) \
-			--format "{text}	{jm}|{code}" > build/jianma$(ver).tsv
+			--format "{text}	{jm}=|{code}" > build/jianma$(ver).tsv
 	echo >> build/jianma$(ver).tsv
 	# 二級簡碼
 	python mb-tool/subset.py build/full$(ver).tsv $(common$(ver)) | \
 		python mb-tool/subset.py -d -st build/jianma$(ver).tsv | \
 		awk -F'\t' 'length($$2) == 4 {print $$1"\t"$$2}' | \
 		python mb-tool/jianma-gen.py $(jm-methods-2) --freq-table $(char-freq$(ver)) \
-			--format "{text}	{jm};|{code}" >> build/jianma$(ver).tsv
+			--format "{text}	{jm}=|{code}" >> build/jianma$(ver).tsv
 	echo >> build/jianma$(ver).tsv
 	# 三級簡碼
 	python mb-tool/subset.py build/full$(ver).tsv $(common$(ver)) | \
